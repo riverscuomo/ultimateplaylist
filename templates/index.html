@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <h1>Ultimate Playlist</h1>  
+  <h4>"One playlist to rule them all..."</h4>   
+  
+  <article class=flashes>
+  {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <ul class=flashes>
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}  
+    </article>
+
+  <form action="{{ url_for('add') }}" method="post">
+    
+    <input id="playlist" type="text" name="playlist" placeholder="Add playlists here"/>
+    <!-- <label for="quantity">Number of songs</label> -->
+    <!-- <input id="quantity" type="integer" name="quantity" placeholder="How many songs do you want to add from that playlist?"/> -->
+    <button type="submit" value='add'>ADD</button>
+    <!-- <button type="submit" value='remove'>Remove</button> -->
+  </form>
+
+
+  <h4>Include:</h4>
+
+
+
+
+        
+    {% for i in recipe %}
+    <form action="{{ url_for('setQuantity') }}" method="post">  
+      <label for="playlist" name="text" class="quantity" >{{i.name}}</label>
+      <span><input id="{{i.id}}" type="integer" name="quantity{{i.id}}" placeholder={{i.quantity}} class="quantity">   </span>    
+      <input type="submit" value="Submit" style="display: none" />
+  </form>
+  {% endfor %}
+
+
+
+
+  
+  <form >    
+    <button action="clearAll" class="clearAll" name="clearAll" method="post" >CLEAR ALL</button>   
+    <br/>
+    <button type="submit" class="generatePlaylist" name="create" formaction="/createPlaylist">GENERATE PLAYLIST</button>
+  </form>
+
+<!-- 
+  <form>
+  
+  </form> -->
+
+
+  <br/><br/>
+  <iframe src="https://open.spotify.com/embed/playlist/{{ playlist_id }}" width="400" height="300" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+  <!-- <a href="/createPlaylist"><input type=”button” >Create Playlist!</a> -->
+{% endblock %}

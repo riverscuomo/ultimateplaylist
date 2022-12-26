@@ -1,0 +1,8 @@
+venv
+build
+*~
+*.pyc
+
+.env
+.G
+.vscode/
