@@ -2,8 +2,7 @@
 ====================
 ## Description
 An early webapp version of Spotnik.
-This is a later, and simpler, version of the app than I shared screenshots from in the Spotnik discusssions.
-It start but then crashes when you try to update the playlist. The Spotify auth isn't set up right.
+It starts but then crashes when you try to update the playlist. The Spotify auth isn't set up right.
 ## Run Locally
 
 * `python app.py`
